@@ -1,0 +1,19 @@
+{
+  "name": "monitor-data-charts",
+  "version": "1.0.0",
+  "description": "A charting library that creates charts using the data from monitoring systems like grafana.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasminmakasana/monitor-data-charts.git"
+  },
+  "author": "Infonium Technologies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasminmakasana/monitor-data-charts/issues"
+  },
+  "homepage": "https://github.com/jasminmakasana/monitor-data-charts#readme"
+}
