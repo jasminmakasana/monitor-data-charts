@@ -30,13 +30,14 @@ function getCanvas(item) {
 }
 
 export default class Ichart {
-  constructor(item, grafanaResponse, chartConfig) {
+  constructor(item, grafanaResponse, chartConfig, panalData = {}) {
     this.chart = {};
     const initialCanvas = getCanvas(item);
     if (initialCanvas && initialCanvas instanceof HTMLElement) {
       const { chartData, options } = new Config(
         grafanaResponse,
-        chartConfig || {}
+        chartConfig || {},
+        panalData
       );
       if (chartConfig.type === constants.ChartTypes.BAR_CHART) {
         this.chart = new controllers.BarController(
@@ -56,6 +57,38 @@ export default class Ichart {
           chartData,
           options
         )._chart;
+      } else if (chartConfig.type === constants.ChartTypes.PIE_CHART) {
+        if (
+          Object.keys(panalData).length > 0 &&
+          Object.prototype.hasOwnProperty.call(panalData, "options") &&
+          Object.prototype.hasOwnProperty.call(
+            panalData.options,
+            "reduceOptions"
+          ) &&
+          panalData.options.reduceOptions.calcs
+        ) {
+          this.chart = new controllers.PieChartController(
+            initialCanvas,
+            chartData,
+            options
+          )._chart;
+        }
+      } else if (chartConfig.type === constants.ChartTypes.BAR_GUAGE) {
+        if (
+          Object.keys(panalData).length > 0 &&
+          Object.prototype.hasOwnProperty.call(panalData, "options") &&
+          Object.prototype.hasOwnProperty.call(
+            panalData.options,
+            "reduceOptions"
+          ) &&
+          panalData.options.reduceOptions.calcs
+        ) {
+          this.chart = new controllers.BarGuageController(
+            initialCanvas,
+            chartData,
+            options
+          )._chart;
+        }
       }
       if (window !== undefined) {
         window.chart = this.chart;

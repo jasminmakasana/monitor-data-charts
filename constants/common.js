@@ -110,6 +110,22 @@ export const defaultOption = {
       },
     ],
   },
+  piechart: {
+    backgroundColor: [
+      "#bca01b",
+      "#53CA43",
+      "#384CFF",
+      "#FF708B",
+      "#A65E2E",
+      "#924E7D",
+      "#5D9B9B",
+      "#9C9C9C",
+      "#E55137",
+      "#354D73",
+    ],
+    borderWidth: 1,
+  },
+  bargauge: { backgroundColor: ["#53CA43"], borderWidth: 1 },
 };
 export default {
   ChartTypes,

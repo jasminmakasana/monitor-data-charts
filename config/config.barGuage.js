@@ -1,17 +1,17 @@
 import { calculateChartJSData } from "../helpers";
 
-export default class PieChartConfig {
+export default class BarGuageConfig {
   static manipulateData = (chartData, panalData) => {
     let manipulateData = [];
     let calcType = panalData.options.reduceOptions.calcs[0];
     let pieData = chartData.results;
     let labels = [];
-    let pieChartData = [];
+    let barGuagechartData = [];
     for (const property in pieData) {
       labels.push(`${property}-Series`);
-      pieChartData.push(calculateChartJSData(pieData[property], calcType));
+      barGuagechartData.push(calculateChartJSData(pieData[property], calcType));
     }
-    manipulateData.push(labels, pieChartData);
+    manipulateData.push(labels, barGuagechartData);
     return manipulateData;
   };
 }

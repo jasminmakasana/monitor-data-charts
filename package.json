@@ -78,6 +78,7 @@
   },
   "homepage": "https://github.com/jasminmakasana/monitor-data-charts#readme",
   "peerDependencies": {
+    "chart.js": "^4.4.1",
     "uplot": "^1.6.27"
   }
 }
