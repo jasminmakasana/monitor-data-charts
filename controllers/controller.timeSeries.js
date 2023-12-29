@@ -1,6 +1,6 @@
 import uPlot from "uplot";
 
-export default class BarController {
+export default class TimeSeriesController {
   constructor(canvas, datasets, config) {
     this._chart = new uPlot(
       { ...config, series: this.addSeries(datasets) },
@@ -13,6 +13,7 @@ export default class BarController {
     let colors = [
       "#bca01b",
       "#53CA43",
+      "#384CFF",
       "#FF708B",
       "#A65E2E",
       "#924E7D",
@@ -20,7 +21,6 @@ export default class BarController {
       "#9C9C9C",
       "#E55137",
       "#354D73",
-      "#384CFF",
     ];
     datasets.forEach((item, index) => {
       if (index === 0) {
@@ -28,7 +28,7 @@ export default class BarController {
       } else {
         series.push({
           stroke: colors[index - 1],
-          paths: uPlot.paths.bars(),
+          paths: uPlot.paths.linear(),
         });
       }
     });
