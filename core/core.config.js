@@ -24,15 +24,7 @@ class Config {
       };
       this.chartData = AllConfigs.StatChartConfig.manipulateData(grafanaData);
     } else if (chartConfig.type === constants.ChartTypes.PIE_CHART) {
-      if (
-        Object.keys(panalData).length > 0 &&
-        Object.prototype.hasOwnProperty.call(panalData, "options") &&
-        Object.prototype.hasOwnProperty.call(
-          panalData.options,
-          "reduceOptions"
-        ) &&
-        panalData.options.reduceOptions.calcs
-      ) {
+      if (panalData?.options?.reduceOptions?.calcs !== undefined) {
         this.options = {
           ...constants.defaultOption[chartConfig.type],
           ...chartConfig.options,
@@ -45,15 +37,7 @@ class Config {
         throw new Error("panal data not available please provide panal data");
       }
     } else if (chartConfig.type === constants.ChartTypes.BAR_GUAGE) {
-      if (
-        Object.keys(panalData).length > 0 &&
-        Object.prototype.hasOwnProperty.call(panalData, "options") &&
-        Object.prototype.hasOwnProperty.call(
-          panalData.options,
-          "reduceOptions"
-        ) &&
-        panalData.options.reduceOptions.calcs
-      ) {
+      if (panalData?.options?.reduceOptions?.calcs !== undefined) {
         this.options = {
           ...constants.defaultOption[chartConfig.type],
           ...chartConfig.options,
@@ -62,6 +46,20 @@ class Config {
           grafanaData,
           panalData
         );
+      } else {
+        throw new Error("panal data not available please provide panal data");
+      }
+    } else if (chartConfig.type === constants.ChartTypes.STATE_TIMELINE) {
+      if (
+        panalData?.targets !== undefined &&
+        Array.isArray(panalData?.targets) &&
+        panalData?.targets.length > 0
+      ) {
+        this.options = {
+          ...constants.defaultOption[chartConfig.type],
+          ...chartConfig.options,
+        };
+        this.chartData = AllConfigs.StateTimeline.manipulateData(grafanaData);
       } else {
         throw new Error("panal data not available please provide panal data");
       }

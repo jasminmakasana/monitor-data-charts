@@ -126,6 +126,10 @@ export const defaultOption = {
     borderWidth: 1,
   },
   bargauge: { backgroundColor: ["#53CA43"], borderWidth: 1 },
+  "state-timeline": {
+    height: calculateHeight(),
+    width: window !== undefined ? window.innerWidth : 300,
+  },
 };
 export default {
   ChartTypes,

@@ -58,15 +58,7 @@ export default class Ichart {
           options
         )._chart;
       } else if (chartConfig.type === constants.ChartTypes.PIE_CHART) {
-        if (
-          Object.keys(panalData).length > 0 &&
-          Object.prototype.hasOwnProperty.call(panalData, "options") &&
-          Object.prototype.hasOwnProperty.call(
-            panalData.options,
-            "reduceOptions"
-          ) &&
-          panalData.options.reduceOptions.calcs
-        ) {
+        if (panalData?.options?.reduceOptions?.calcs !== undefined) {
           this.chart = new controllers.PieChartController(
             initialCanvas,
             chartData,
@@ -74,21 +66,20 @@ export default class Ichart {
           )._chart;
         }
       } else if (chartConfig.type === constants.ChartTypes.BAR_GUAGE) {
-        if (
-          Object.keys(panalData).length > 0 &&
-          Object.prototype.hasOwnProperty.call(panalData, "options") &&
-          Object.prototype.hasOwnProperty.call(
-            panalData.options,
-            "reduceOptions"
-          ) &&
-          panalData.options.reduceOptions.calcs
-        ) {
+        if (panalData?.options?.reduceOptions?.calcs !== undefined) {
           this.chart = new controllers.BarGuageController(
             initialCanvas,
             chartData,
             options
           )._chart;
         }
+      } else if (chartConfig.type === constants.ChartTypes.STATE_TIMELINE) {
+        this.chart = new controllers.StateTimelineController(
+          initialCanvas,
+          panalData,
+          chartData,
+          options
+        )._chart;
       }
       if (window !== undefined) {
         window.chart = this.chart;
