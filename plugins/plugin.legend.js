@@ -1,4 +1,5 @@
 import uPlot from "uplot";
+import { fmtDate } from "../helpers";
 
 const MAX_OBJECTS = 10;
 const MAX_LEVELS = 4;
@@ -149,8 +150,8 @@ function distr(numItems, sizeFactor, justify, onlyIdx, each) {
 
 Object.assign(Quadtree.prototype, proto);
 
-export function timelinePlugin(opts) {
-  const { mode, count, fill, stroke, panalData } = opts;
+export function legendPlugin(opts) {
+  const { mode, count, fill, stroke, panalData, legendRenderContent } = opts;
   const inf = Infinity;
   const pxRatio = devicePixelRatio;
   const laneWidth = 0.9;
@@ -364,7 +365,6 @@ export function timelinePlugin(opts) {
   let hovered = Array(count).fill(null);
   let yMids = Array(count).fill(0);
   let ySplits = Array(count).fill(0);
-  let fmtDate = uPlot.fmtDate("{YYYY}-{MM}-{DD} {HH}:{mm}:{ss}");
   let legendTimeValueEl = null;
   return {
     hooks: {
@@ -372,52 +372,8 @@ export function timelinePlugin(opts) {
         legendTimeValueEl = u.root.querySelector(
           ".u-series:first-child .u-value"
         );
-        u.root.querySelector(
-          "table.u-legend"
-        ).innerHTML = `<div class="css-1dscup2">
-        <div class="css-k008qs">
-          <ul class="css-14m29r0">
-            ${(
-              JSON.parse(
-                JSON.stringify(
-                  panalData?.fieldConfig?.defaults?.thresholds?.steps
-                )
-              ).reverse() ?? []
-            ).map((e) => {
-              return `<li class="css-1baulvz">
-              <span class="css-eoftnt"
-                ><div
-                  class="css-olan4g-LegendItemWrapper"
-                  aria-label="VizLegend series < 90"
-                >
-                  <div
-                    data-testid="series-icon"
-                    class="css-140ea9t"
-                    style="
-                      background: ${e.color};
-                      width: 14px;
-                      height: 4px;
-                      border-radius: 9999px;
-                      display: inline-block;
-                      margin-right: 8px;
-                    "
-                  ></div>
-                  <button
-                    disabled=""
-                    type="button"
-                    title="< 90"
-                    class="css-efzvgr-LegendLabel"
-                  >
-                    &lt; ${e.value}
-                  </button>
-                </div></span
-              >
-            </li>`;
-            })}
-          </ul>
-        </div>
-      </div>
-      `;
+        u.root.querySelector("table.u-legend").innerHTML =
+          legendRenderContent(panalData);
       },
       drawClear: (u) => {
         qt = qt || new Quadtree(0, 0, u.bbox.width, u.bbox.height);

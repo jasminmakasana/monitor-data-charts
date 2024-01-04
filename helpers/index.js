@@ -1,3 +1,5 @@
+import uPlot from "uplot";
+
 export function _isDomSupported() {
   return typeof window !== "undefined" && typeof document !== "undefined";
 }
@@ -60,3 +62,27 @@ export const calculateChartJSData = (data, calcType) => {
     return numberToFixed(100 * Math.abs((first - last) / ((first + last) / 2)));
   }
 };
+
+export const timeconversion = (timeInMilliseconds) => {
+  if (Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 365)) >= 1) {
+    return (
+      Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 365)) + "year"
+    );
+  } else if (Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 30)) >= 1) {
+    return (
+      Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 30)) + "month"
+    );
+  } else if (Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 7)) >= 1) {
+    return Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24 * 7)) + "week";
+  } else if (Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24)) >= 1) {
+    return Math.floor(timeInMilliseconds / (1000 * 60 * 60 * 24)) + "day";
+  } else if (Math.floor(timeInMilliseconds / (1000 * 60 * 60)) >= 1) {
+    return Math.floor(timeInMilliseconds / (1000 * 60 * 60)) + "hr";
+  } else if (Math.floor(timeInMilliseconds / (1000 * 60)) >= 1) {
+    return Math.floor(timeInMilliseconds / (1000 * 60)) + "mint";
+  } else {
+    return Math.floor(timeInMilliseconds / (1000 * 60)) + "mili second";
+  }
+};
+
+export let fmtDate = uPlot.fmtDate("{YYYY}-{MM}-{DD} {HH}:{mm}:{ss}");

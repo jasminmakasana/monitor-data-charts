@@ -80,6 +80,13 @@ export default class Ichart {
           chartData,
           options
         )._chart;
+      } else if (chartConfig.type === constants.ChartTypes.HEATMAP) {
+        this.chart = new controllers.HeatMapController(
+          initialCanvas,
+          panalData,
+          chartData,
+          options
+        )._chart;
       }
       if (window !== undefined) {
         window.chart = this.chart;

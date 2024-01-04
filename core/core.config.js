@@ -59,7 +59,22 @@ class Config {
           ...constants.defaultOption[chartConfig.type],
           ...chartConfig.options,
         };
-        this.chartData = AllConfigs.StateTimeline.manipulateData(grafanaData);
+        this.chartData =
+          AllConfigs.StateTimelineConfig.manipulateData(grafanaData);
+      } else {
+        throw new Error("panal data not available please provide panal data");
+      }
+    } else if (chartConfig.type === constants.ChartTypes.HEATMAP) {
+      if (
+        panalData?.targets !== undefined &&
+        Array.isArray(panalData?.targets) &&
+        panalData?.targets.length > 0
+      ) {
+        this.options = {
+          ...constants.defaultOption[chartConfig.type],
+          ...chartConfig.options,
+        };
+        this.chartData = AllConfigs.HeatMapConfig.manipulateData(grafanaData);
       } else {
         throw new Error("panal data not available please provide panal data");
       }

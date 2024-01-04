@@ -130,6 +130,10 @@ export const defaultOption = {
     height: calculateHeight(),
     width: window !== undefined ? window.innerWidth : 300,
   },
+  heatmap: {
+    height: calculateHeight(),
+    width: window !== undefined ? window.innerWidth : 300,
+  },
 };
 export default {
   ChartTypes,
