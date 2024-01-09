@@ -130,6 +130,11 @@ export const defaultOption = {
     height: calculateHeight(),
     width: window !== undefined ? window.innerWidth : 300,
   },
+  gauge: { backgroundColor: ["#53CA43"], borderWidth: 1 },
+  "state-timeline": {
+    height: calculateHeight(),
+    width: window !== undefined ? window.innerWidth : 300,
+  },
   heatmap: {
     height: calculateHeight(),
     width: window !== undefined ? window.innerWidth : 300,

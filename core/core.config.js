@@ -49,6 +49,19 @@ class Config {
       } else {
         throw new Error("panal data not available please provide panal data");
       }
+    } else if (chartConfig.type === constants.ChartTypes.GAUGE) {
+      if (panalData?.options?.reduceOptions?.calcs !== undefined) {
+        this.options = {
+          ...constants.defaultOption[chartConfig.type],
+          ...chartConfig.options,
+        };
+        this.chartData = AllConfigs.GuageConfig.manipulateData(
+          grafanaData,
+          panalData
+        );
+      } else {
+        throw new Error("panal data not available please provide panal data");
+      }
     } else if (chartConfig.type === constants.ChartTypes.STATE_TIMELINE) {
       if (
         panalData?.targets !== undefined &&

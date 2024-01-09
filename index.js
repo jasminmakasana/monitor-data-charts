@@ -73,6 +73,15 @@ export default class Ichart {
             options
           )._chart;
         }
+      } else if (chartConfig.type === constants.ChartTypes.GAUGE) {
+        if (panalData?.options?.reduceOptions?.calcs !== undefined) {
+          this.chart = new controllers.GuageController(
+            initialCanvas,
+            panalData,
+            chartData,
+            options
+          )._chart;
+        }
       } else if (chartConfig.type === constants.ChartTypes.STATE_TIMELINE) {
         this.chart = new controllers.StateTimelineController(
           initialCanvas,
