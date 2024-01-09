@@ -82,7 +82,7 @@ export default class GuageController {
               ...config,
               backgroundColor: this.handleChartDrow(panalData, number).color,
               color: this.findChartColor(panalData, number),
-              borderWidth: 1,
+              borderWidth: 0,
               cutout: "70%",
               circumference: 180,
               rotation: 270,
