@@ -91,6 +91,12 @@ class Config {
       } else {
         throw new Error("panal data not available please provide panal data");
       }
+    } else if (chartConfig.type === constants.ChartTypes.HISTOGRAM) {
+      this.options = {
+        ...constants.defaultOption[chartConfig.type],
+        ...chartConfig.options,
+      };
+      this.chartData = AllConfigs.HistogramConfig.manipulateData(grafanaData);
     }
   }
 }

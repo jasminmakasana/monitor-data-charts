@@ -6,3 +6,4 @@ export { default as BarGuageController } from "./controller.barGuage.js";
 export { default as StateTimelineController } from "./controller.stateTimeline.js";
 export { default as HeatMapController } from "./controller.heatMap.js";
 export { default as GuageController } from "./controller.guage.js";
+export { default as HistogramController } from "./controller.histogram.js";

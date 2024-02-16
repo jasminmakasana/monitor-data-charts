@@ -96,6 +96,12 @@ export default class Ichart {
           chartData,
           options
         )._chart;
+      } else if (chartConfig.type === constants.ChartTypes.HISTOGRAM) {
+        this.chart = new controllers.HistogramController(
+          initialCanvas,
+          chartData,
+          options
+        )._chart;
       }
       if (window !== undefined) {
         window.chart = this.chart;

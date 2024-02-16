@@ -6,3 +6,4 @@ export { default as BarGuageConfig } from "./config.barGuage.js";
 export { default as StateTimelineConfig } from "./config.stateTimeline.js";
 export { default as HeatMapConfig } from "./config.heatMap.js";
 export { default as GuageConfig } from "./config.guage.js";
+export { default as HistogramConfig } from "./config.histogram.js";
