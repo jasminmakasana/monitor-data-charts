@@ -174,7 +174,11 @@ useEffect(() => {
 
 ## Demo
 
-Insert gif or link to demo
+
+
+https://github.com/jasminmakasana/monitor-data-charts/assets/78531888/a58e9409-7935-4ba5-86c3-0b730ca768ad
+
+
 
 
 ## Documentation
